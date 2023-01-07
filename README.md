@@ -1,12 +1,12 @@
 # SnapCameraPreservation
 
-The purpose of this project is to allow users to still use and find snap chat lesnes with the snap camera application after the Jan 25th, 2023 shutdown.
+The purpose of this project is to allow users to still use and find snap chat lenses with the snap camera application after the Jan 25th, 2023 shutdown.
 
 This project uses a modified version of the 1.21.0 version of Snap Chat for Windows. Be sure to install that one before replacing with the Snap Camera.exe file here.
 
 # Instructions
 
-Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide my site the 1.21.0 exe located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Patch the file on the site, and make sure you replace the patched one with the original one.
+Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide the site the 1.21.0 version of "Snap Camera.exe" located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Patch the file on the site, and make sure you replace the patched one with the original one.
 
 I cannot host the EXE due to possible copyrights but I can patch it if you provide the original exe.
 
