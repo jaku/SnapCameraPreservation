@@ -21,7 +21,7 @@ I've modified the Snap Camera.exe to use my servers instead of the Snap Chat ser
 I then wrote a server that relays the information from the camera app to the snap chat servers (for now), which downloads the lenses separately and communicates back to the app in the way it expects.  
 
 # Where is the code?
-As of Jan 6th, 2023 I've been very sick. I am working to clean it up and host the server code here so that others can host it themselves if they wish. Hopefully early next week I'll have this ready. The EXE is very easy to compare the normal download to with mine to see the changes with soemthing like WinDiff if you wish to see the changes directly.
+As of Jan 3rd, 2023 I've been very sick. So I've not been able to work on this as much and have made a lot of bad code. I plan to clean it up and host the server code here so that others can host it themselves if they wish and hopefully early next week (Jan 8-12th) I'll have this ready. The EXE is very easy to compare the normal download to with mine to see the changes with soemthing like WinDiff if you wish to see the changes directly.
 
 # Who are you and why are you doing this?
 
