@@ -6,7 +6,9 @@ This project uses a modified version of the 1.21.0 version of Snap Chat for Wind
 
 # Instructions
 
-Download my Snap Camera.exe located on this GitHub page. Make sure you have 1.21.0 installed and not running, replace the Snap Camera.exe file locaated at the default install location of "C:\Program Files\Snap Inc\Snap Camera" with the downloaded Snap Camera.exe.
+Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide my site the 1.21.0 exe located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Patch the file on the site, and make sure you replace the patched one with the original one.
+
+I cannot host the EXE due to possible copyrights but I can patch it if you provide the original exe.
 
 You'll know you are communicating with my server because a new category will be listed in the app called "Jaku Snap Backup".
 
