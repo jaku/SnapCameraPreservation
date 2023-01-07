@@ -21,5 +21,10 @@ I've modified the Snap Camera.exe to use my servers instead of the Snap Chat ser
 # Where is the code?
 As of Jan 6th, 2023 I've been very sick. I am working to clean it up and host the server code here so that others can host it themselves if they wish. Hopefully early next week I'll have this ready. The EXE is very easy to compare the normal download to with mine to see the changes with soemthing like WinDiff if you wish to see the changes directly.
 
+# Who are you and why are you doing this?
+
+I am Jaku. If you're familar with the software on Twitch called Crowd Control then you're already familar with some of my work as I run the company behind that. Or maybe you were an Animal Crossing fan and played in 2020 and used https://turnip.exchange, I along with another friend (Ross) built that. You can find more about me at https://about.me/jaku but overall I just like to build things and have been building things for Twitch streamers, gamers and others for over 7 years now. I have a background that allows for this sort of stuff, and I enjoy working on them. 
+
+
 # I have more questions or comments.
 Feel free to submit an issue on Github with questions or message me on Twitter at https://twitter.com/jaku. 
