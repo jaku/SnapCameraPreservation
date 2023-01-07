@@ -16,6 +16,8 @@ If you see the above, go ahead and click on each of your saved lenses and activa
 # Instructions for Mac
 I haven't been able to test if this works yet. But I've created a Mac patch that should work in theory. 
 
+After testing this does not appear to work for MacOS at this time. I'm still leaving the instructions below for now, but am looking into this sistuation to try and come up with a solution.
+
 Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Select the 1.21.0 (MAC) patch from the selection box and provide it with your "Snap Camera" binary. You should be able to find it by going to your Applications folder finding the Snap Camera app, right-clicking the application and select "Show Package Contents", inside there should be a Contents/MacOS/ folder followed by the "Snap Camera" binary. Select that file to patch, download the patched file after running though the patcher on the site, replace the "Snap Camera" in the MacOS folder with the newly patched file and you should be good to go.
 
 Please let me know if this does not work, I don't have access to my Mac at this time to confirm.
