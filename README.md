@@ -4,15 +4,22 @@ The purpose of this project is to allow users to still use and find snap chat le
 
 This project uses a modified version of the 1.21.0 version of Snap Chat for Windows. Be sure to install that one before following the instructions on this page.
 
-# Instructions
-
-Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide the site the 1.21.0 version of "Snap Camera.exe" located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Patch the file on the site, and make sure you replace the original file with the newly created patch file, you will need to rename the patch file to make it match.
+# Instructions for PC
+Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide the site the 1.21.0 version of "Snap Camera.exe" located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Make sure the 1.21.0 PC patch file is selected on the site, and make sure you replace the original file with the newly created patch file, you will need to rename the patch file to make it match.
 
 I cannot host the EXE due to possible copyrights but I can patch it if you provide the original exe.
 
 You'll know you are communicating with my server because a new category will be listed in the app called "Jaku Snap Backup".
 
 If you see the above, go ahead and click on each of your saved lenses and activat them once to ensure they are backed up. After that you are free to sit back and relax.
+
+# Instructions for Mac
+I haven't been able to test if this works yet. But I've created a Mac patch that should work in theory. 
+
+Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Select the 1.21.0 (MAC) patch from the selection box and provide it with your "Snap Camera" binary. You should be able to find it by going to your Applications folder finding the Snap Camera app, right-clicking the application and select "Show Package Contents", inside there should be a Contents/MacOS/ folder followed by the "Snap Camera" binary. Select that file to patch, download the patched file after running though the patcher on the site, replace the "Snap Camera" in the MacOS folder with the newly patched file and you should be good to go.
+
+Please let me know if this does not work, I don't have access to my Mac at this time to confirm.
+
 
 # How does this work?
 
