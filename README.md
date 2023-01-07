@@ -18,6 +18,8 @@ If you see the above, go ahead and click on each of your saved lenses and activa
 
 I've modified the Snap Camera.exe to use my servers instead of the Snap Chat servers. This was done with a hex editor and 2 modifications were made. Instead of communicating with studio-app.snapchat.com it now communicates with snapchatreverse.jaku.tv. By doing so my server then communicates to the Snap servers to get the lenses data as if you were accessing it directly and downloads the lenses to an S3 bucket on Amazon. 
 
+I then wrote a server that relays the information from the camera app to the snap chat servers (for now), which downloads the lenses separately and communicates back to the app in the way it expects.  
+
 # Where is the code?
 As of Jan 6th, 2023 I've been very sick. I am working to clean it up and host the server code here so that others can host it themselves if they wish. Hopefully early next week I'll have this ready. The EXE is very easy to compare the normal download to with mine to see the changes with soemthing like WinDiff if you wish to see the changes directly.
 
