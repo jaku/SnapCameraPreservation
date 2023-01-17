@@ -14,13 +14,15 @@ You'll know you are communicating with my server because a new category will be 
 If you see the above, go ahead and click on each of your saved lenses and activat them once to ensure they are backed up. After that you are free to sit back and relax.
 
 # Instructions for Mac
-I haven't been able to test if this works yet. But I've created a Mac patch that should work in theory. 
+Patching the application similar to Windows does not work. The built-in security of MacOS is preventing modified binaries to run, and attempts to resign are failing. However another solution for MacOS users exists, it's not my favoriate approach, but it does work and is available for users.
 
-After testing this does not appear to work for MacOS at this time. I'm still leaving the instructions below for now, but am looking into this sistuation to try and come up with a solution.
+Download the studio-app.snapchat.com.crt file in this repository. Double-clicking it should open up your Keychain Manager, click on the login option on the left-hand side of the Keychain Manager, and then on the right-hand side click Certificates. You should see studio-app.snapchat.com listed with a red icon to the left of the name. Go ahead and right-click on this file and select "Get Info", click the Trust arrow at the top and for the option "When using this certificate" select "Always Trust", close this window and it should prompt you for your MacOS password.
 
-Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Select the 1.21.0 (MAC) patch from the selection box and provide it with your "Snap Camera" binary. You should be able to find it by going to your Applications folder finding the Snap Camera app, right-clicking the application and select "Show Package Contents", inside there should be a Contents/MacOS/ folder followed by the "Snap Camera" binary. Select that file to patch, download the patched file after running though the patcher on the site, replace the "Snap Camera" in the MacOS folder with the newly patched file and you should be good to go.
+Almost done!
 
-Please let me know if this does not work, I don't have access to my Mac at this time to confirm.
+Open up terminal, you can type terminal into spotlight. Type into the terminal ```sudo su``` without quotes, hit enter and it will again prompt for your password. Next type ```echo "66.228.41.64    studio-app.snapchat.com" >> /etc/hosts``` making sure you have the >> to not overwrite your current hosts file.
+
+With that you can now close the terminal window and open Snap Camera, if everything works you should see "Jaku Snap Backup" as one of the categories.
 
 
 # How does this work?
