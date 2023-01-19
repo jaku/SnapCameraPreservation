@@ -150,6 +150,7 @@ app.get(['/vc/v1/explorer/lenses','/vc/v1/explorer/top', '/vc/v1/explorer/catego
 	const url = req.url;
 
 	const response = await fetch(`https://studio-app.snapchat.com${url}`, {method: 'GET', headers});
+	if (response.status !== 200) return res.json({});
 	const data = await response.json();
 
 	if ( data && data['lenses'] ) {
@@ -170,7 +171,7 @@ app.get('/vc/v1/explorer/unlock', async function(req, res, next) {
 	const {uid} = req.query;
 
 	const response = await fetch(`https://studio-app.snapchat.com${url}`, {method: 'GET', headers});
-
+	if (response.status !== 200) return res.json({});
 	const data = await response.json();
 	if ( data && data['lens_id'] ) {
 		insertUnlock(data);
@@ -184,6 +185,7 @@ app.get('/vc/v1/explorer/categories', async function(req, res, next) {
 	const url = req.url;
 
 	const response = await fetch(`https://studio-app.snapchat.com${url}`, {method: 'GET', headers});
+	if (response.status !== 200) return res.json({});
 	const data = await response.json();
 	const jakuBackup = {
 		"id": "jakubackup",
@@ -224,6 +226,7 @@ app.post(['/vc/v1/explorer/search','/vc/v1/explorer/lenses'], async function(req
 	//if it doesnt work we then just use results from our database, and if it does work we'll still merge our data
 
 	const response = await fetch(`https://studio-app.snapchat.com${url}`, {method: 'POST', body: JSON.stringify(body), headers});
+	if (response.status !== 200) return res.json({});
 	let data;
 	
 	try {
@@ -275,6 +278,7 @@ app.get('/vc/v1/explorer/scheduled', async function(req, res, next) {
 	const url = req.url;
 
 	const response = await fetch(`https://studio-app.snapchat.com${url}`, {method: 'GET', headers});
+	if (response.status !== 200) return res.json({});
 	const data = await response.json();
 	for (var j = 0; j < data['lenses'].length; j++){
 		data['lenses'][j].lens_name = `*${data['lenses'][j].lens_name}`;
@@ -289,6 +293,7 @@ app.get('/vc/v1/explorer/scheduled', async function(req, res, next) {
 app.get('*', async function(req, res, next) {
 	const url = req.url;
 	const response = await fetch(`https://studio-app.snapchat.com${url}`, {method: 'GET', headers});
+	
 	let data;
 	try {
 		data = await response.json();
