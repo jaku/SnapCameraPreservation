@@ -12,7 +12,7 @@ This server requires nodeJS (16+) and mysql/mariaDB, nginx and an S3 storage sol
 
 1. Clone the repo
    ```sh
-   git https://github.com/jaku/SnapCameraPreservation
+   git clone https://github.com/jaku/SnapCameraPreservation
    ```
 2. Navigate to the server folder of the repo
    ```sh
