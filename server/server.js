@@ -312,7 +312,7 @@ app.post('*', async function(req,res,next) {
 
 function savePreviews(url) {
 	
-	if (!url) return;
+	if (!url.includes("preview-media")) return;
 
 	let name = url.split('/');
 	
