@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `lenses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lenses` (
-  `unlockable_id` bigint(20) NOT NULL DEFAULT '0',
+  `unlockable_id` varchar(20) NOT NULL DEFAULT '0',
   `snapcode_url` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_display_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `lens_name` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -37,6 +37,7 @@ CREATE TABLE `lenses` (
   `image_sequence` json DEFAULT NULL,
   `thumbnail_media_poster_url` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   `standard_media_poster_url` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mirrored` int(11) DEFAULT '0',
   PRIMARY KEY (`unlockable_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
