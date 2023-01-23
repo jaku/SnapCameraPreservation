@@ -87,7 +87,7 @@ async function insertLens(lenses, report) {
 		if ( !standard_media_poster_url ) standard_media_poster_url = "";
 		if ( !standard_media_url ) standard_media_url = "";
 		
-		//hits our own service on every unlockable ID to make sure it gets the additional details about the lens
+		//requests the unlock URL with the unlockable_id to get more info on the lens
 		Util.selfBackup(unlockable_id);
 
 		return new Promise(resolve => {

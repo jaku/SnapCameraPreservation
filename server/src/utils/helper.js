@@ -14,11 +14,7 @@ const s3 = new AWS.S3({
 
 const s3Bucket = process.env.S3BUCKET;
 const s3URL = process.env.S3URL;
-const backupDomain = process.env.BACKUPDOMAIN;
-if (!backupDomain) {
-	console.log("Missing BACKUPDOMAIN in .env file"); 
-	process.exit();	
-};
+
 
 const snapHeaders = {
 	'X-Installation-Id': 'default'
@@ -196,8 +192,12 @@ async function postSnapDeeplink(body) {
 	return data;
 }
 
-function selfBackup(unlockable_id) {
-	fetch(`https://${backupDomain}/vc/v1/explorer/unlock?uid=${unlockable_id}`, {method: 'GET', headers}); 
+async function selfBackup(unlockable_id) {
+
+	const data = await Util.getSnapRequest(`unlock?uid=${unlockable_id}`);
+	if ( data && data['lens_id'] ) 	DB.insertUnlock(data);
+	res.json(data);
+
 };
 
 
