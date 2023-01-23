@@ -193,11 +193,8 @@ async function postSnapDeeplink(body) {
 }
 
 async function selfBackup(unlockable_id) {
-
-	const data = await Util.getSnapRequest(`unlock?uid=${unlockable_id}`);
-	if ( data && data['lens_id'] ) 	DB.insertUnlock(data);
-	res.json(data);
-
+	const data = await getSnapRequest(`/unlock?uid=${unlockable_id}`);
+	if ( data && data['lens_id'] ) DB.insertUnlock(data);
 };
 
 
