@@ -11,9 +11,7 @@ router.post('/', async function(req, res, next) {
 	if (!body || !body['deeplink']) return res.json({});
 
 	const data = await Util.postSnapRequest(req.originalUrl, req.body);
-
-	DB.insertLens(data['lenses']);
-
+	if ( data && data['lenses'] ) DB.insertLens(data['lenses']);
 
 	res.json(data);
 });
