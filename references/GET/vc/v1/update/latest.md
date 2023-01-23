@@ -6,6 +6,5 @@
 
 
 # Server Response:
-```json
-{"version":"1.21.0","notes":"What's new:\r\n- Support for Lenses created in Lens Studio 4.36."}```
+    {"version":"1.21.0","notes":"What's new:\r\n- Support for Lenses created in Lens Studio 4.36."}
 
