@@ -21,21 +21,14 @@ router.post('/', async function(req, res, next) {
 			"deeplink": `https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=${uuid}&metadata=01`
 		};
 
-		const deepLinkSearchResponse = await postSnapDeeplink(deepLinkBody);
-		if (deepLinkSearchResponse.status !== 200) return res.json({});
-		let deepLinkData;
-
-		try {
-			deepLinkData = await deepLinkSearchResponse.json();
-		} catch (e) {
-			return res.json({})
-		}
-
-		if ( deepLinkData && deepLinkData['lenses'] ) {
-			DB.insertLens(deepLinkData['lenses']);
+		const deepLinkSearchResponse = await Util.postSnapDeeplink(deepLinkBody);
+		if ( !deepLinkSearchResponse ) return res.json({});
+		
+		if ( deepLinkSearchResponse && deepLinkSearchResponse['lenses'] ) {
+			DB.insertLens(deepLinkSearchResponse['lenses']);
 		};
 
-		return res.json(deepLinkData);
+		return res.json(deepLinkSearchResponse);
 
 	};
 

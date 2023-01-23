@@ -75,7 +75,6 @@ function getSingleLens(lensID) {
 
 async function insertLens(lenses, report) {
 
-	
 	lenses.forEach(async function(lens, index) {
 
 		let { unlockable_id, snapcode_url, user_display_name, lens_name, lens_status, deeplink, icon_url, thumbnail_media_url, 
@@ -93,7 +92,7 @@ async function insertLens(lenses, report) {
 
 		return new Promise(resolve => {
 			connection.query(`INSERT INTO lenses (unlockable_id, snapcode_url, user_display_name, lens_name, lens_status, deeplink, icon_url, thumbnail_media_url, thumbnail_media_poster_url, standard_media_url, standard_media_poster_url, obfuscated_user_slug, image_sequence) VALUES 
-				(${unlockable_id}, '${snapcode_url}', ${connection.escape(user_display_name)}, '${lens_name}', '${lens_status}', '${deeplink}', '${icon_url}', '${thumbnail_media_url}', 
+				('${unlockable_id}', '${snapcode_url}', ${connection.escape(user_display_name)}, '${lens_name}', '${lens_status}', '${deeplink}', '${icon_url}', '${thumbnail_media_url}', 
 				'${thumbnail_media_poster_url}', '${standard_media_url}', '${standard_media_poster_url}', '${obfuscated_user_slug}', '${JSON.stringify(image_sequence)}')`, function (err, results) {
 					if (err && err.code !== "ER_DUP_ENTRY") {
 						console.log(err, lens_name)
@@ -129,8 +128,8 @@ async function insertLens(lenses, report) {
 	  							Util.savePreviews(url_pattern.replace('%d', i));
 							}
 						};
+						console.log("Saved Lens", lens_name, unlockable_id);
 						connection.query(`UPDATE lenses SET mirrored=1 WHERE unlockable_id='${unlockable_id}'`)
-
 					}
 				});
 		});
