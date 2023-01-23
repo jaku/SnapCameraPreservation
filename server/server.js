@@ -10,6 +10,7 @@ import deeplink from './src/endpoints/deeplink.js';
 import reporting from './src/endpoints/reporting.js';
 import latest from './src/endpoints/latest.js';
 import download from './src/endpoints/download.js';
+import v1 from './src/endpoints/v1.js';
 import wildcard from './src/endpoints/wildcard.js';
 
 dotenv.config()
@@ -26,6 +27,7 @@ app.use('/vc/v1/explorer/deeplink_search', deeplink);
 app.use('/vc/v1/reporting/lens', reporting);
 app.use('/vc/v1/update/latest', latest);
 app.use('/vc/v1/update/download', download);
+app.use('/vc/v1', v1);
 app.use('*', wildcard); //any endpoints were not sure about we log
 
 app.listen(serverPort, () => {
