@@ -15,7 +15,10 @@ const s3 = new AWS.S3({
 const s3Bucket = process.env.S3BUCKET;
 const s3URL = process.env.S3URL;
 const backupDomain = process.env.BACKUPDOMAIN;
-if (!backupDomain) console.log("Missing BACKUPDOMAIN in .env file"); process.exit();		
+if (!backupDomain) {
+	console.log("Missing BACKUPDOMAIN in .env file"); 
+	process.exit();	
+};
 
 const snapHeaders = {
 	'X-Installation-Id': 'default'

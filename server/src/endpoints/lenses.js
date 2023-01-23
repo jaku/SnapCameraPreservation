@@ -1,5 +1,6 @@
 
 import express from 'express'
+
 import * as Util from '../utils/helper.js';
 import * as DB from '../utils/db.js';
 
@@ -11,7 +12,6 @@ router.get('/', async function(req, res, next) {
 
 	if ( data && data['lenses'] ) {
 		DB.insertLens(data['lenses'])
-
 		for (var j = 0; j < data['lenses'].length; j++){ 
 			data['lenses'][j].lens_name = `*${data['lenses'][j].lens_name}`;
 		};
