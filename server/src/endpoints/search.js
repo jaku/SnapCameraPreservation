@@ -32,9 +32,7 @@ router.post('/', async function(req, res, next) {
 		}
 
 		if ( deepLinkData && deepLinkData['lenses'] ) {
-			deepLinkData['lenses'].forEach(function(lens, index) {
-				DB.insertLens(lens);
-			})
+			DB.insertLens(deepLinkData['lenses']);
 		};
 
 		return res.json(deepLinkData);
@@ -58,9 +56,7 @@ router.post('/', async function(req, res, next) {
 	if ( data && !data['lenses'] && !searchResults ) return res.json({"lenses": []}); //nothing found either server, send nothing
 	if ( data && !data['lenses'] && searchResults ) return res.json({"lenses": searchResults}); //nothing found on server, send our results
 		
-	data['lenses'].forEach(function(lens, index) {
-		DB.insertLens(lens);
-	})	
+	DB.insertLens(data['lenses']);
 
 
 	if (searchResults) { //if we have search results from our search and data from snapchat, time to merge it

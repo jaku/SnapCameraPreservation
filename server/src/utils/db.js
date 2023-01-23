@@ -75,6 +75,7 @@ function getSingleLens(lensID) {
 
 async function insertLens(lenses, report) {
 
+	
 	lenses.forEach(async function(lens, index) {
 
 		let { unlockable_id, snapcode_url, user_display_name, lens_name, lens_status, deeplink, icon_url, thumbnail_media_url, 
