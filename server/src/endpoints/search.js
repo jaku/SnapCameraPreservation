@@ -41,26 +41,20 @@ router.post('/', async function(req, res, next) {
 
 	};
 
-	searchResults = await DB.lensSearch(searchTerm)	//searches our DB for lenses
+	searchResults = await DB.lensSearch(searchTerm);	//searches our DB for lenses
 	
 	//searching is weird, some search results don't work at all against their servers, so we first try to search against them
 	//if it doesnt work we then just use results from our database, and if it does work still merge our data with theres
-	const response = await Util.postSnapRequest(req.originalUrl, body);
-	if (!response) return res.json({});
-
-	let data;
-	
-	try {
-		data = await response.json();
-
-	} catch (e) {
-		for (var j = 0; j < searchResults.length; j++){
-			searchResults[j].lens_name = `*${searchResults[j].lens_name}`;
-		};
-		if ( searchResults ) return res.json({"lenses": searchResults}); //server didnt like the request, just give them our search results
-		return res.json({})
+	const data = await Util.postSnapRequest(req.originalUrl, body);
+	if ( data && !data[0] ) {		
+		if ( searchResults ) {
+			for (var j = 0; j < searchResults.length; j++){
+				searchResults[j].lens_name = `*${searchResults[j].lens_name}`;
+			};
+			return res.json({"lenses": searchResults}); //server didnt like the request, just give them our search results
+		}
+		return res.json({"lenses": []})
 	}
-
 	if ( data && !data['lenses'] && !searchResults ) return res.json({"lenses": []}); //nothing found either server, send nothing
 	if ( data && !data['lenses'] && searchResults ) return res.json({"lenses": searchResults}); //nothing found on server, send our results
 		
