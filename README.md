@@ -20,19 +20,19 @@ Download the studio-app.snapchat.com.crt file in this repository. Double-clickin
 
 Almost done!
 
-Open up terminal, you can type terminal into spotlight. Type into the terminal ```sudo su``` without quotes, hit enter and it will again prompt for your password. Next type ```echo "66.228.41.64    studio-app.snapchat.com" >> /etc/hosts``` making sure you have the >> to not overwrite your current hosts file.
+Open up terminal, you can type terminal into spotlight. Next you'll need to type this into the terminal ```echo "66.228.41.64    studio-app.snapchat.com" | sudo tee -a /etc/hosts```, it will prompt for your local computers password. But from there you should be all set.
 
 With that you can now close the terminal window and open Snap Camera, if everything works you should see "Jaku Snap Backup" as one of the categories.
 
 
 # How does this work?
 
-I've modified the Snap Camera.exe to use my servers instead of the Snap Chat servers. This was done with a hex editor and 2 modifications were made. Instead of communicating with studio-app.snapchat.com it now communicates with snapchatreverse.jaku.tv. By doing so my server then communicates to the Snap servers to get the lenses data as if you were accessing it directly and downloads the lenses to an S3 bucket on Amazon. 
+I've modified the Snap Camera.exe (for Windows) to use my servers instead of the Snap Chat servers. This was done with a hex editor and 2 modifications were made. Instead of communicating with studio-app.snapchat.com it now communicates with snapchatreverse.jaku.tv.For Mac users we aren't changing the host but instead telling it that the hosts IP is something else and installing a self-signed certificate  By doing so my server then communicates to the Snap servers to get the lenses data as if you were accessing it directly and downloads the lenses to an S3 bucket on Amazon. 
 
 I then wrote a server that relays the information from the camera app to the snap chat servers (for now), which downloads the lenses separately and communicates back to the app in the way it expects.  
 
 # Where is the code?
-As of Jan 3rd, 2023 I've been very sick. So I've not been able to work on this as much and have made a lot of bad code. I plan to clean it up and host the server code here so that others can host it themselves if they wish and hopefully early next week (Jan 8-12th) I'll have this ready. The EXE is very easy to compare the normal download to with mine to see the changes with soemthing like WinDiff if you wish to see the changes directly.
+Server code can be found in the server folder. After being sick for way to long I finally got around to clearning it up from the pervious attempts. You can see how the server works by relaying the information from the Snap Chat servers for now. I also created a reference folder which contains all the known endpoints and their expected responses.
 
 # Who are you and why are you doing this?
 
