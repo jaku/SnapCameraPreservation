@@ -1,6 +1,9 @@
 
 import express from 'express'
 
+import * as Util from '../utils/helper.js';
+import * as DB from '../utils/db.js';
+
 const jakuBackup = {
 	"id": "jakubackup",
 	"description": "If you are seeing this, then your lenses are being backed up. A * in the name means it's been saved.",
