@@ -24,6 +24,7 @@ app.use('/vc/v1/explorer/search', search);
 app.use('/vc/v1/explorer/deeplink_search', deeplink);
 app.use('/vc/v1/reporting/lens', reporting);
 app.use('/vc/v1/update/latest', latest);
+//app.use('/vc/v1/update/download', download);
 app.use('*', wildcard); //any endpoints were not sure about we log
 
 app.listen(serverPort, () => {

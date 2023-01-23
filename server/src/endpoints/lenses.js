@@ -38,10 +38,11 @@ router.post('/', async function(req, res, next) {
 		const data = await Util.postSnapRequest(req.originalUrl, req.body);
 		if ( data && data['lenses'] ) {
 			lens = data['lenses'];
-			DB.insertLens(data['lenses'])			
+			DB.insertLens(data['lenses']);
 		};
 	}; 
-
+	
+	if (!lens) { return res.json() }
 	for (var j = 0; j < lens.length; j++){ //update all lenses names
 		lens[j].lens_name = `*${lens[j].lens_name}`;
 	};
