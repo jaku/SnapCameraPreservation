@@ -3,6 +3,7 @@ import express from "express";
 
 import lenses from './src/endpoints/lenses.js';
 import categorylenses from './src/endpoints/categorylenses.js';
+import top from './src/endpoints/top.js';
 import unlock from './src/endpoints/unlock.js';
 import categories from './src/endpoints/categories.js';
 import scheduled from './src/endpoints/scheduled.js';
@@ -19,8 +20,9 @@ const serverPort = process.env.PORT;
 const app = express();
 
 app.use(express.json());
-app.use(['/vc/v1/explorer/lenses','/vc/v1/explorer/top'], lenses);
+app.use(/vc/v1/explorer/lenses, lenses);
 app.use('/vc/v1/explorer/category/lenses', categorylenses);
+app.use('/vc/v1/explorer/top', top);
 app.use('/vc/v1/explorer/unlock', unlock);
 app.use('/vc/v1/explorer/categories', categories);
 app.use('/vc/v1/explorer/scheduled', scheduled);
