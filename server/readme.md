@@ -1,6 +1,10 @@
 ## Information
 
-This server is not completed, it is only going to backup and relay information for the Snap Camera application at this time. An updated version of this will cut off the relay from Snap Chats server after the Janauary 25th, shutdown. This application however is working and will help backup your existing lenses to your own S3 or S3 compatible storage.
+This server is fully completed now with the exception of being able to use deeplinks when the Snap Chat servers are shutdown. In the .env file is a RELAY variable setting that to false will no longer reach out to the Snap Chat servers for lenses and information and so any and all requests will be done by this server and the S3 buckets. I've tested it and all appears to be working, but their might be some issues with it.
+
+A lot of the data like the featured lenses, categories and top community lenses are just resending what the orignal app was doing. In the future it might be fun to build a way to have that information actually change and get updated as lenses are used.
+
+The idea of importing lenses that are not backed up has been throw around and I've looked into it a bit. Currently it appears that the lens files that are being downloaded by other snap applications are not the same type, and initial attempts to reverse engineer those have been met in failure. It's still not impossible, but currently I do not have a solution for this, so it is very important that everyone attempts to locate and activate their lenses before the shutdown.
 
 
 ### Prerequisites
