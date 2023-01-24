@@ -48,7 +48,8 @@ function lensSearch(term) {
 			}
 		})
 	});
-}
+};
+
 function getMultipleLenses(lenses) {
 	return new Promise(resolve => {
 		connection.query(`SELECT * FROM lenses WHERE unlockable_id IN (${connection.escape(lenses)});`, async function(err, results) {
@@ -59,7 +60,7 @@ function getMultipleLenses(lenses) {
 			}
 		})
 	});
-}
+};
 
 function getSingleLens(lensID) {
 	return new Promise(resolve => {
@@ -71,7 +72,19 @@ function getSingleLens(lensID) {
 			}
 		})
 	});
-}
+};
+
+function getLensUnlock(lensID) {
+	return new Promise(resolve => {
+		connection.query(`SELECT * FROM unlocks WHERE lens_id="${lensID}" LIMIT 1;`, async function(err, results) {
+			if ( results && results[0] ) {
+				resolve(results);
+			} else {
+				resolve();
+			}
+		})
+	});
+};
 
 async function insertLens(lenses, report) {
 
@@ -138,4 +151,4 @@ async function insertLens(lenses, report) {
 
 };
 
-export { getSingleLens, getMultipleLenses, lensSearch, updateLens, insertUnlock, insertLens };
+export { getSingleLens, getLensUnlock, getMultipleLenses, lensSearch, updateLens, insertUnlock, insertLens };

@@ -4,6 +4,8 @@ import express from 'express'
 import * as Util from '../utils/helper.js';
 import * as DB from '../utils/db.js';
 
+const relay = Util.relay();
+
 var router = express.Router();
 
 router.get('/', async function(req, res, next) {
@@ -25,30 +27,42 @@ router.post('/', async function(req, res, next) {
 
 	const body = req.body;
 	if (!body || !body['lenses'] ) return res.json({});
-
 	const lenses = body['lenses'];
 	let lens;
-	if ( lenses.length === 1 ) {
-		lens = await DB.getSingleLens(parseInt(lenses[0])); 
-	} else if ( lenses.length > 1 ) {
-		lens = await DB.getMultipleLenses((lenses));
-	};
 
-	if (!lens) { //if our server doesnt find a lens, lets search their servers.
-		const data = await Util.postSnapRequest(req.originalUrl, req.body);
-		if ( data && data['lenses'] ) {
-			lens = data['lenses'];
-			DB.insertLens(data['lenses']);
+	if (relay) {
+		if ( lenses.length === 1 ) {
+			lens = await DB.getSingleLens(parseInt(lenses[0])); 
+		} else if ( lenses.length > 1 ) {
+			lens = await DB.getMultipleLenses((lenses));
 		};
-	}; 
-	
-	if (!lens) { return res.json() }
-	for (var j = 0; j < lens.length; j++){ //update all lenses names
-		lens[j].lens_name = `*${lens[j].lens_name}`;
+
+		if (!lens) { //if our server doesnt find a lens, lets search their servers.
+			const data = await Util.postSnapRequest(req.originalUrl, req.body);
+			if ( data && data['lenses'] ) {
+				lens = data['lenses'];
+				DB.insertLens(data['lenses']);
+			};
+		}; 
+		
+		if (!lens) { return res.json() }
+		for (var j = 0; j < lens.length; j++){ //update all lenses names
+			lens[j].lens_name = `*${lens[j].lens_name}`;
+		};
+
+	} else {
+
+		if ( lenses.length === 1 ) {
+			lens = await DB.getSingleLens(parseInt(lenses[0])); 
+		} else if ( lenses.length > 1 ) {
+			lens = await DB.getMultipleLenses((lenses));
+		};
+
+		if (lens) lens = Util.modifyResponseURLs(lens);
+		console.log("WORKING")
+
 	};
 
-	//instead of storing our URL in the DB we retain the original URL incase the servers dont shutdown.
-	//lens = JSON.parse(JSON.stringify(lens).replace(/community-lens.storage.googleapis.com/g, 's3.amazonaws.com/lens-storage-reversesnapcht.jaku.tv'));
 	return res.json({"lenses": lens});
 
 

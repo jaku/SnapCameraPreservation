@@ -14,13 +14,12 @@ const s3 = new AWS.S3({
 
 const s3Bucket = process.env.S3BUCKET;
 const s3URL = process.env.S3URL;
-
+const relay = process.env.RELAY;
 
 const snapHeaders = {
 	'X-Installation-Id': 'default'
 };
 const headers = new Headers(snapHeaders);
-
 
 function savePreviews(url) {
 	
@@ -197,5 +196,22 @@ async function selfBackup(unlockable_id) {
 	if ( data && data['lens_id'] ) DB.insertUnlock(data);
 };
 
+//replaces any javascript object we pass it that has some of the original URLs and replaces them with our s3Bucket URL
+function modifyResponseURLs(orgResponse) {
+	orgResponse = JSON.stringify(orgResponse);
+	return JSON.parse(orgResponse.replaceAll(/snapcodes.storage.googleapis.com|storage.googleapis.com|lens-storage.storage.googleapis.com|community-lens.storage.googleapis.com/gi, s3URL));
+};
 
-export { backupImages, saveLens, savePNG, savePreviews, getSnapRequest, postSnapRequest, postSnapDeeplink, selfBackup};
+function getS3Bucket() {
+	return s3Bucket;
+};
+
+function getS3URL() {
+	return s3URL;
+};
+
+function relay() {
+	return relay;
+}
+
+export { backupImages, saveLens, savePNG, savePreviews, getSnapRequest, postSnapRequest, postSnapDeeplink, selfBackup, modifyResponseURLs, getS3Bucket, getS3URL, relay};
