@@ -14,7 +14,7 @@ const s3 = new AWS.S3({
 
 const s3Bucket = process.env.S3BUCKET;
 const s3URL = process.env.S3URL;
-const relay = process.env.RELAY;
+const isRelay = process.env.RELAY;
 
 const snapHeaders = {
 	'X-Installation-Id': 'default'
@@ -211,7 +211,7 @@ function getS3URL() {
 };
 
 function relay() {
-	return relay;
-}
+	return isRelay;
+};
 
 export { backupImages, saveLens, savePNG, savePreviews, getSnapRequest, postSnapRequest, postSnapDeeplink, selfBackup, modifyResponseURLs, getS3Bucket, getS3URL, relay};
