@@ -1,6 +1,6 @@
 import express from 'express'
-import * as Util from '../utils/helper.js';
-import * as DB from '../utils/db.js';
+import * as Util from '../../utils/helper.js';
+import * as DB from '../../utils/db.js';
 
 import fs from 'fs';
 
