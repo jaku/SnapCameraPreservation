@@ -59,7 +59,6 @@ router.post('/', async function(req, res, next) {
 		};
 
 		if (lens) lens = Util.modifyResponseURLs(lens);
-		console.log("WORKING")
 
 	};
 
