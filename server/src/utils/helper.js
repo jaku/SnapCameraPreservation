@@ -119,41 +119,6 @@ function saveLens(id, url) {
 };
 
 
-function backupImages() {
-
-		// connection.query(`SELECT * FROM lenses WHERE mirrored=0 LIMIT 1;`, async function(err, results) {
-		// 	if (!results) return;
-		// 	let { unlockable_id, snapcode_url, user_display_name, lens_name, lens_status, deeplink, icon_url, thumbnail_media_url, 
-		// 	thumbnail_media_poster_url, standard_media_url, standard_media_poster_url, obfuscated_user_slug, image_sequence } = results[0];
-
-		// 	if ( !image_sequence ) image_sequence = {};
-		// 	if ( !thumbnail_media_url ) thumbnail_media_url = "";
-		// 	if ( !thumbnail_media_poster_url ) thumbnail_media_poster_url = "";
-		// 	if ( !obfuscated_user_slug ) obfuscated_user_slug = "";
-		// 	if ( !standard_media_poster_url ) standard_media_poster_url = "";
-		// 	if ( !standard_media_url ) standard_media_url = "";
-
-	
-		// 	savePNG(icon_url); 
-		// 	savePNG(snapcode_url);
-		// 	savePreviews(thumbnail_media_poster_url);
-		// 	savePreviews(standard_media_url);
-		// 	savePreviews(standard_media_poster_url);
-
-		// 	//this is frames of the video as jpg, so we need to back up each frame...
-		// 	if (image_sequence && image_sequence?.size) {
-		// 		let { url_pattern, size } = image_sequence;
-		// 		for (let i = 0; i < size; i++) {
-		// 			savePreviews(url_pattern.replace('%d', i));
-		// 		}
-		// 	};
-	
-		// 	connection.query(`UPDATE lenses SET mirrored=1 WHERE unlockable_id='${unlockable_id}'`)
-		// 	setTimeout(function () { backupImages(); }, 300);
-		// });
-
-};
-
 async function getSnapRequest(path) {
 	const response = await fetch(`https://studio-app.snapchat.com${path}`, {method: 'GET', headers});
 	if (response.status !== 200) return {};
@@ -192,7 +157,7 @@ async function postSnapDeeplink(body) {
 }
 
 async function selfBackup(unlockable_id) {
-	const data = await getSnapRequest(`/unlock?uid=${unlockable_id}`);
+	const data = await getSnapRequest(`/vc/v1/explorer/unlock?uid=${unlockable_id}`);
 	if ( data && data['lens_id'] ) DB.insertUnlock(data);
 };
 
