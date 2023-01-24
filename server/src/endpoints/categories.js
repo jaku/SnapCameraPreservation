@@ -1,4 +1,3 @@
-
 import express from 'express'
 
 import * as Util from '../utils/helper.js';
@@ -40,4 +39,3 @@ router.get('/', async function(req, res, next) {
 });
 
 export default router;
-

@@ -176,7 +176,11 @@ function getS3URL() {
 };
 
 function relay() {
-	return isRelay;
+	if (isRelay.toLowerCase() === "false" ) {
+		return false;
+	} else {
+		return true;
+	};
 };
 
-export { backupImages, saveLens, savePNG, savePreviews, getSnapRequest, postSnapRequest, postSnapDeeplink, selfBackup, modifyResponseURLs, getS3Bucket, getS3URL, relay};
+export { saveLens, savePNG, savePreviews, getSnapRequest, postSnapRequest, postSnapDeeplink, selfBackup, modifyResponseURLs, getS3Bucket, getS3URL, relay};
