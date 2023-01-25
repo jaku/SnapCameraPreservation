@@ -4,7 +4,9 @@ The purpose of this project is to allow users to still use and find snap chat le
 This project uses a modified version of the 1.21.0 version of Snap Chat for Windows. Be sure to install that one before following the instructions on this page.
 
 # Instructions for PC
-Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide the site the 1.21.0 version of "Snap Camera.exe" located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Make sure the 1.21.0 PC patch file is selected on the site, and make sure you replace the original file with the newly created patch file, you will need to rename the patch file to make it match.
+Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide the site the 1.21.0 version of "Snap Camera.exe" located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Do not patch the installer, this will not work if you patch the installer. Make sure the 1.21.0 PC patch file is selected on the site, and make sure you replace the original "Snap Camera.exe" file with the newly created patch file, you will need to remove/renme the original file and then rename the patched file to "Snap Camera.exe" when neither one is running.
+
+If you continue to have issues, make sure you don't have any adblock or things blocking the patch site and that you are patching the correct version.
 
 I cannot host the EXE due to possible copyrights but I can patch it if you provide the original exe.
 
@@ -23,14 +25,14 @@ Open up terminal, you can type terminal into spotlight. Next you'll need to type
 
 With that you can now close the terminal window and open Snap Camera, if everything works you should see "Jaku Snap Backup" as one of the categories.
 
+# Unlock Lenses?
+Since starting this project I learned that some lenses are not available in the search of Snap Camera and instead must be directly searched for by their URL in the search box. I'm happy to report that these also work on this project and as an extra bounus I made it so that you can use links like ``https://lens.snapchat.com/81f476238cf84615ba349efe82b36c27`` instead of the ``https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=81f476238cf84615ba349efe82b36c27&metadata=01`` style links. However at this time there are still some lenses that remain locked even when searching directly. I'm currently investigating that.
 
 # How does this work?
 I've modified the Snap Camera.exe (for Windows) to use my servers instead of the Snap Chat servers. This was done with a hex editor and 2 modifications were made. Instead of communicating with studio-app.snapchat.com it now communicates with snapchatreverse.jaku.tv.For Mac users we aren't changing the host but instead telling it that the hosts IP is something else and installing a self-signed certificate  By doing so my server then communicates to the Snap servers to get the lenses data as if you were accessing it directly and downloads the lenses to an S3 bucket on Amazon. 
 
 I then wrote a server that relays the information from the camera app to the snap chat servers (for now), which downloads the lenses separately and communicates back to the app in the way it expects.  
 
-# Unlock Lenses?
-Since starting this project I learned that some lenses are not available in the search of Snap Camera and instead must be directly searched for by their URL in the search box. I'm happy to report that these also work on this project and as an extra bounus I made it so that you can use links like ``https://lens.snapchat.com/81f476238cf84615ba349efe82b36c27`` instead of the ``https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=81f476238cf84615ba349efe82b36c27&metadata=01`` style links. However at this time there are still some lenses that remain locked even when searching directly. I'm currently investigating that.
 
 # Where is the code?
 Server code can be found in the server folder. After being sick for way to long I finally got around to clearning it up from the pervious attempts. You can see how the server works by relaying the information from the Snap Chat servers for now. I also created a reference folder which contains all the known endpoints and their expected responses.
