@@ -5,6 +5,9 @@ import * as DB from '../utils/db.js';
 
 const relay = Util.relay();
 
+//might add more later?
+const advancedTerms = {by: "user_display_name"};
+
 var router = express.Router();
 
 router.post('/', async function(req, res, next) {
@@ -34,6 +37,29 @@ router.post('/', async function(req, res, next) {
 
 				return res.json(deepLinkSearchResponse);
 
+			};
+
+			//advanced search
+			let advancedSearch = Util.getFromBetween.get(searchTerm,"(",")");
+			if (advancedSearch && advancedSearch[0]) {
+				let search = "";
+				advancedSearch.forEach(function(terms) {
+					const term = terms.trimStart().trimEnd().split(':');
+					const key = advancedTerms[term[0].trimStart().trimEnd()];
+					const value = term[1].replaceAll(/\"|\'|\`/gi, '').trimStart().trimEnd();
+
+					if(advancedTerms[term[0]]) {
+						search = search + `${key}="${value}"`;
+					};
+				});
+
+				if (search) searchResults = await DB.advancedSearch(search);
+
+				if (searchResults) {
+					data = Util.modifyResponseURLs(searchResults);
+					data = {"lenses": data};
+					return res.json(data);
+				};
 			};
 
 			searchResults = await DB.lensSearch(searchTerm);	//searches our DB for lenses
@@ -76,7 +102,28 @@ router.post('/', async function(req, res, next) {
 			};
 
 		} else {
-			searchResults = await DB.lensSearch(searchTerm);
+
+			let advancedSearch = Util.getFromBetween.get(searchTerm,"(",")");
+			if (advancedSearch && advancedSearch[0]) {
+				let search = "";
+				advancedSearch.forEach(function(terms) {
+					const term = terms.trimStart().trimEnd().split(':');
+					const key = advancedTerms[term[0].trimStart().trimEnd()];
+					const value = term[1].replaceAll(/\"|\'|\`/gi, '').trimStart().trimEnd();
+
+					if(advancedTerms[term[0]]) {
+						search = search + `${key}="${value}"`;
+					};
+				});
+				if (search) {
+					searchResults = await DB.advancedSearch(search);
+				} else {
+					searchResults = await DB.lensSearch(searchTerm);	
+				};
+			} else {
+				searchResults = await DB.lensSearch(searchTerm);
+			};
+
 			if (searchResults) {
 				data = Util.modifyResponseURLs(searchResults);
 				data = {"lenses": data};

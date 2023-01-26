@@ -40,7 +40,19 @@ function updateLens(id) {
 
 function lensSearch(term) {
 	return new Promise(resolve => {
-		connection.query(`SELECT * FROM lenses WHERE lens_name LIKE '%${term}%' LIMIT 32;`, async function(err, results) {
+		connection.query(`SELECT * FROM lenses WHERE lens_name LIKE '%${term}%' LIMIT 128;`, async function(err, results) {
+			if ( results && results[0] ) {
+				resolve(results);
+			} else {
+				resolve();
+			}
+		})
+	});
+};
+
+function advancedSearch(query) {
+	return new Promise(resolve => {
+		connection.query(`SELECT * FROM lenses WHERE ${query} LIMIT 128;`, async function(err, results) {
 			if ( results && results[0] ) {
 				resolve(results);
 			} else {
@@ -151,4 +163,4 @@ async function insertLens(lenses, report) {
 
 };
 
-export { getSingleLens, getLensUnlock, getMultipleLenses, lensSearch, updateLens, insertUnlock, insertLens };
+export { getSingleLens, getLensUnlock, getMultipleLenses, lensSearch, advancedSearch, updateLens, insertUnlock, insertLens };
