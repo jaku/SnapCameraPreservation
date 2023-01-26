@@ -15,6 +15,7 @@ const s3 = new AWS.S3({
 const s3Bucket = process.env.S3BUCKET;
 const s3URL = process.env.S3URL;
 const isRelay = process.env.RELAY;
+const s3Replace = process.env.S3REPLACE;
 
 const snapHeaders = {
 	'X-Installation-Id': 'default'
@@ -206,6 +207,7 @@ async function selfBackup(unlockable_id) {
 
 //replaces any javascript object we pass it that has some of the original URLs and replaces them with our s3Bucket URL
 function modifyResponseURLs(orgResponse) {
+	if(!replaceS3) return orgResponse;
 	orgResponse = JSON.stringify(orgResponse);
 	return JSON.parse(orgResponse.replaceAll(/snapcodes.storage.googleapis.com|storage.googleapis.com|lens-storage.storage.googleapis.com|community-lens.storage.googleapis.com/gi, s3URL));
 };
@@ -226,4 +228,12 @@ function relay() {
 	};
 };
 
-export { getFromBetween, saveLens, savePNG, savePreviews, getSnapRequest, postSnapRequest, postSnapDeeplink, selfBackup, modifyResponseURLs, getS3Bucket, getS3URL, relay};
+function replaceS3() {
+	if (s3Replace.toLowerCase() === "false" ) {
+		return false;
+	} else {
+		return true;
+	};
+};
+
+export { getFromBetween, saveLens, savePNG, savePreviews, getSnapRequest, postSnapRequest, postSnapDeeplink, selfBackup, modifyResponseURLs, getS3Bucket, getS3URL, relay, replaceS3};
