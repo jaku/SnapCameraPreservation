@@ -8,7 +8,7 @@ let originalResponse = {"items":[{"id":"wfh","description":"You're going to want
 
 const jakuBackup = {
 	"id": "jakubackup",
-	"description": "If you are seeing this, then your lenses are being backed up. A * in the name means it's been saved.",
+	"description": "Snap Camera is officially offline. But it's okay, because you're using my server since you can read this.",
 	"title": "Jaku Snap Backup!",
 	"lens_count": 0,
 	"thumbnails": {
