@@ -207,7 +207,7 @@ async function selfBackup(unlockable_id) {
 
 //replaces any javascript object we pass it that has some of the original URLs and replaces them with our s3Bucket URL
 function modifyResponseURLs(orgResponse) {
-	if(!s3Replace) return orgResponse;
+	if(!replaceS3()) return orgResponse;
 	orgResponse = JSON.stringify(orgResponse);
 	return JSON.parse(orgResponse.replaceAll(/snapcodes.storage.googleapis.com|storage.googleapis.com|lens-storage.storage.googleapis.com|community-lens.storage.googleapis.com/gi, s3URL));
 };
