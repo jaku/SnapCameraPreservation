@@ -110,7 +110,7 @@ router.post('/', async function(req, res, next) {
 				let search = "";
 				advancedSearch.forEach(function(terms) {
 					const term = terms.trimStart().trimEnd().split(':');
-						if (term && term[0]) {
+						if (term && term[0] && term[1]) {
 						const key = advancedTerms[term[0].trimStart().trimEnd()];
 						const value = term[1].replaceAll(/\"|\'|\`/gi, '').trimStart().trimEnd();
 
