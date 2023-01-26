@@ -45,11 +45,13 @@ router.post('/', async function(req, res, next) {
 				let search = "";
 				advancedSearch.forEach(function(terms) {
 					const term = terms.trimStart().trimEnd().split(':');
-					const key = advancedTerms[term[0].trimStart().trimEnd()];
-					const value = term[1].replaceAll(/\"|\'|\`/gi, '').trimStart().trimEnd();
+					if (term && term[0]) {
+						const key = advancedTerms[term[0].trimStart().trimEnd()];
+						const value = term[1].replaceAll(/\"|\'|\`/gi, '').trimStart().trimEnd();
 
-					if(advancedTerms[term[0]]) {
-						search = search + `${key}="${value}"`;
+						if(advancedTerms[term[0]]) {
+							search = search + `${key}="${value}"`;
+						};
 					};
 				});
 
@@ -108,11 +110,13 @@ router.post('/', async function(req, res, next) {
 				let search = "";
 				advancedSearch.forEach(function(terms) {
 					const term = terms.trimStart().trimEnd().split(':');
-					const key = advancedTerms[term[0].trimStart().trimEnd()];
-					const value = term[1].replaceAll(/\"|\'|\`/gi, '').trimStart().trimEnd();
+						if (term && term[0]) {
+						const key = advancedTerms[term[0].trimStart().trimEnd()];
+						const value = term[1].replaceAll(/\"|\'|\`/gi, '').trimStart().trimEnd();
 
-					if(advancedTerms[term[0]]) {
-						search = search + `${key}="${value}"`;
+						if(advancedTerms[term[0]]) {
+							search = search + `${key}="${value}"`;
+						};
 					};
 				});
 				if (search) {
