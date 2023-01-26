@@ -10,7 +10,7 @@ This project uses a modified version of the 1.21.0 version of Snap Chat for Wind
 # Instructions for PC
 Head over to https://snapchatreverse.jaku.tv/snap/ and make sure you have 1.21.0 installed. Provide the site the 1.21.0 version of "Snap Camera.exe" located at the default install location of "C:\Program Files\Snap Inc\Snap Camera". Do not patch the installer, this will not work if you patch the installer. Make sure the 1.21.0 PC patch file is selected on the site, and make sure you replace the original "Snap Camera.exe" file with the newly created patch file, you will need to remove/renme the original file and then rename the patched file to "Snap Camera.exe" when neither one is running.
 
-If you continue to have issues, make sure you don't have any adblock or things blocking the patch site and that you are patching the correct version.
+If you have issues, make sure you don't have any adblock or things blocking the patch site and that you are patching the correct version. Additionally make sure that the original Snap Camera application is stopped and not running at all. I recommend checking your task manager and searching for "Snap Camera" and closing it there to be sure. If it is running you will not be able to replace it's file with mine.
 
 I cannot host the EXE due to possible copyrights but I can patch it if you provide the original exe.
 
