@@ -1,3 +1,6 @@
+## Notice
+   As of January 26th, 2023 the domain Snap Camera normally uses is now offline. We will not be able to recovery any lenses that are missing, please do not create issues looking for lenses or messaging me about it. If I find a way to bring missing lenses I will make an update but as of now, we do not have the ability to do this.
+
 ## Information
 
 This server is fully completed now with the exception of being able to use deeplinks when the Snap Chat servers are shutdown. In the .env file is a RELAY variable setting that to false will no longer reach out to the Snap Chat servers for lenses and information and so any and all requests will be done by this server and the S3 buckets. I've tested it and all appears to be working, but their might be some issues with it.

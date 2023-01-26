@@ -11,9 +11,7 @@ router.get('/', async function(req, res, next) {
 	let response;
 	console.log("Undocumented GET URL:", req.originalUrl)
 	if (relay) response = await Util.getSnapRequest(req.originalUrl);
-	
 	res.json(response);
-
 });
 
 router.post('/', async function(req, res, next) {
@@ -21,9 +19,7 @@ router.post('/', async function(req, res, next) {
 	if (req.body) body = req.body;
 	console.log("Undocumented POST URL:", req.originalUrl)
 	if (relay) response = await Util.postSnapRequest(req.originalUrl, body);
-
 	res.json(response);
-
 });
 
 export default router;
