@@ -1,5 +1,7 @@
 ## Notice
-   As of January 26th, 2023 the domain Snap Camera normally uses is now offline. We will not be able to recovery any lenses that are missing, please do not create issues looking for lenses or messaging me about it. If I find a way to bring missing lenses I will make an update but as of now, we do not have the ability to do this.
+   As of January 26th, 2023 the domain Snap Camera normally uses is now offline. We will not be able to recovery any lenses that are missing, please do not create issues looking for lenses or messaging me about it. If I find a way to bring missing lenses I will make an update but as of now, we do not have the ability to do this. 
+
+   If you do not have 1.21.0 installed for Windows you can search for the installer, be careful though some installers may have extra software packed in with them. You can check the installer is the original one from Snap Camera by uploading your installer to https://emn178.github.io/online-tools/md5_checksum.html, if you get an MD5 of anything other than ec0816368314db8a35ddf06784ffadfe I recommend finding site with the installer.
 
 
 # SnapCameraPreservation
@@ -31,6 +33,8 @@ With that you can now close the terminal window and open Snap Camera, if everyth
 
 # Unlock Lenses?
 Since starting this project I learned that some lenses are not available in the search of Snap Camera and instead must be directly searched for by their URL in the search box. I'm happy to report that these also work on this project and as an extra bounus I made it so that you can use links like ``https://lens.snapchat.com/81f476238cf84615ba349efe82b36c27`` instead of the ``https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=81f476238cf84615ba349efe82b36c27&metadata=01`` style links. However at this time there are still some lenses that remain locked even when searching directly. I'm currently investigating that.
+
+The above will no longer work now that they shutdown the servers.
 
 # How does this work?
 I've modified the Snap Camera.exe (for Windows) to use my servers instead of the Snap Chat servers. This was done with a hex editor and 2 modifications were made. Instead of communicating with studio-app.snapchat.com it now communicates with snapchatreverse.jaku.tv.For Mac users we aren't changing the host but instead telling it that the hosts IP is something else and installing a self-signed certificate  By doing so my server then communicates to the Snap servers to get the lenses data as if you were accessing it directly and downloads the lenses to an S3 bucket on Amazon. 
