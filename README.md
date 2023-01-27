@@ -32,9 +32,11 @@ Open up terminal, you can type terminal into spotlight. Next you'll need to type
 With that you can now close the terminal window and open Snap Camera, if everything works you should see "Jaku Snap Backup" as one of the categories.
 
 # Unlock Lenses?
+**The below will no longer work now that they shutdown the servers.**
+
 Since starting this project I learned that some lenses are not available in the search of Snap Camera and instead must be directly searched for by their URL in the search box. I'm happy to report that these also work on this project and as an extra bounus I made it so that you can use links like ``https://lens.snapchat.com/81f476238cf84615ba349efe82b36c27`` instead of the ``https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=81f476238cf84615ba349efe82b36c27&metadata=01`` style links. However at this time there are still some lenses that remain locked even when searching directly. I'm currently investigating that.
 
-The above will no longer work now that they shutdown the servers.
+**The above will no longer work now that they shutdown the servers.**
 
 # How does this work?
 I've modified the Snap Camera.exe (for Windows) to use my servers instead of the Snap Chat servers. This was done with a hex editor and 2 modifications were made. Instead of communicating with studio-app.snapchat.com it now communicates with snapchatreverse.jaku.tv.For Mac users we aren't changing the host but instead telling it that the hosts IP is something else and installing a self-signed certificate  By doing so my server then communicates to the Snap servers to get the lenses data as if you were accessing it directly and downloads the lenses to an S3 bucket on Amazon. 
