@@ -1,5 +1,5 @@
 ## Notice
-   As of January 26th, 2023, the domain Snap Camera normally uses is now offline. We will not be able to recover any lenses that are missing, please do not create issues looking for lenses or messaging me about it. If I find a way to bring the missing lenses I will make an update, but as of now, we do not have the ability to do this. 
+   As of January 26th, 2023, the domain Snap Camera normally uses is now offline. We will not be able to recover any lenses that are missing, please do not create issues looking for lenses or message me about it. If I find a way to bring the missing lenses I will make an update, but as of now, we do not have the ability to do this. 
 
    If you do not have 1.21.0 installed for Windows, you can search for the installer, be careful though some installers may have extra software packed in with them. You can check the installer is the original one from Snap Camera by uploading your installer to https://emn178.github.io/online-tools/md5_checksum.html. If you get an MD5 of anything other than ec0816368314db8a35ddf06784ffadfe I recommend finding a site with the installer.
 
