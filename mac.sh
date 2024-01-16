@@ -6,7 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Check if Snap Camera is running
-if grep -x "Snap Camera" > /dev/null; then
+if pgrep -x "Snap Camera" > /dev/null; then
     pkill -x "Snap Camera"
 fi
 
