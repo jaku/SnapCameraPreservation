@@ -12,7 +12,7 @@ fi
 
 # Check if Snap Camera is installed
 if [ ! -d "/Applications/Snap Camera.app" ]; then
-    echo "Snap Camera not found. Please install it first and then run this script."
+    echo "Snap Camera not found. Please install first and then run this script."
     exit 1
 fi
 
@@ -20,7 +20,7 @@ original_binary="/Applications/Snap Camera.app/Contents/MacOS/Snap Camera"
 tmp_hex_dump="/tmp/snapcamera.hex"
 modified_binary="/tmp/snapcamera"
 
-if [ ! -f $original_binary ]; then
+if [ ! -f "$original_binary" ]; then
     echo "Snap Camera not found. Please install first and then run this script."
     exit 1
 fi
@@ -31,7 +31,7 @@ original_url_hex="68747470733a2f2f73747564696f2d6170702e736e6170636861742e636f6d
 # https://snapchatreverse.jaku.tv/snap
 replacement_url_hex="68747470733a2f2f736e617063686174726576657273652e6a616b752e7476"
 
-echo "This part will take a whie. Please be patient."
+echo "This part will take a while. Please be patient."
 
 # Step 1: Dump the binary to a plain hex representation
 xxd -p "$original_binary" | tr -d '\n' > "$tmp_hex_dump"
