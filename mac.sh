@@ -12,7 +12,7 @@ fi
 
 # Check if Snap Camera is installed
 if [ ! -d "/Applications/Snap Camera.app" ]; then
-    echo "Snap Camera not found. Please install first and then run this script."
+    echo "Snap Camera not found. Please install it first and then run this script."
     exit 1
 fi
 
@@ -20,7 +20,7 @@ original_binary="/Applications/Snap Camera.app/Contents/MacOS/Snap Camera"
 tmp_hex_dump="/tmp/snapcamera.hex"
 modified_binary="/tmp/snapcamera"
 
-if [ ! -f original_binary ]; then
+if [ ! -f $original_binary ]; then
     echo "Snap Camera not found. Please install first and then run this script."
     exit 1
 fi
