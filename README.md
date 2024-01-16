@@ -1,3 +1,12 @@
+## January 15th, 2024 Update
+
+It's been a little over a year now since this project got started; when I first set off to develop this, I only thought a few hundred people would be interested; as of my last count, we had over 1 million unique users end up patching and using this project/server in some way. When I first built this, we were in a bit of a rush as the servers were shutting down, and unfortunately for me, I was sick with the flu at the time. So the solution put in place for Windows was good, but the MacOS implementation could have been better if I had more time to research. So the update to this project today brings a better solution to MacOS users, which should overall be easier for users and should be able to last for as long as MacOS can run the Snap Camera application.
+
+I've recently been coding an update to this entire project that will make setup for all users to configure and setup, as well as bring new and old features back to the application. I have been live-streaming some of the developments on my [Twitch channel](https://twitch.tv/jaku). I'll share more info here and update the images in the Snap Camera app as I make progress. I do plan to have some features that require payment in the new app, as I have spent much of my time and resources on this project in the last year, and overall, it has cost me more than I have received from those who have tipped. While tipping is not required, if you received support from me, made a living, or just want to help support a developer making cool stuff, please consider tipping at one of these links. http://ko-fi.com/jaku, http://paypal.me/jaku, http://venmo.com/thejaku, and http://cash.app/thejaku. If you are unable to tip, that is okay too! Just remember, you can always follow me on https://twitter.com/jaku or https://twitch.tv/jaku to show support as well. Thank you.
+
+Many MacOS users who have had their Snap Camera working since last year with my patch will break in the next few days, so be sure to follow the newly posted MacOS instructions below to get started. These new steps should work with any version of the application on MacOS. If you do have issues, though, please create a ticket here, and I will try to help.
+
+
 ## Notice
    As of January 26th, 2023, the domain Snap Camera normally uses is now offline. We will not be able to recover any lenses that are missing, please do not create issues looking for lenses or message me about it. If I find a way to bring the missing lenses I will make an update, but as of now, we do not have the ability to do this. 
 
