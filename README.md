@@ -37,22 +37,11 @@ We changed how we handle the MacOS setup for Snap Camera, using terminal to down
 
 Simply open up Terminal on your Mac; if you are not sure how to do this, you can follow these steps from Apple. https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125
 
-Once you have Terminal open copy and paste the follow command in, exactly as it is typed here. ``sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jaku/SnapCameraPreservation/main/mac.sh)"``
+Once you have Terminal open, copy and paste the following command in, exactly as it is typed here. 
+``sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jaku/SnapCameraPreservation/main/mac.sh)"``
 
-After about a minute it should complete and you can now open the application. You should be good to go from this point.
+After about a minute, it should complete, and you can now open the application. You should be good to go from this point.
 
-
-~~# Instructions for Mac
-Patching the application similar to Windows does not work. The built-in security of MacOS is preventing modified binaries to run, and attempts to resign are failing. However, another solution for MacOS users exists, it's not my favorite approach, but it does work and is available for users.
-
-Download the [studio-app.snapchat.com.crt.zip](https://github.com/jaku/SnapCameraPreservation/raw/main/studio-app.snapchat.com.zip) file in this repository, and extract it. You should now have a studio-app.snapchat.com.crt file. Double-clicking it should open up your Keychain Manager. Click on the login option on the left-hand side of the Keychain Manager, and then on the right-hand side, click Certificates. You should see studio-app.snapchat.com listed with a red icon to the left of the name. Go ahead and right-click on this file and select "Get Info", click the Trust arrow at the top, and for the option "When using this certificate," select "Always Trust", close this window, and it should prompt you for your MacOS password.
-
-Almost done!
-
-Open up terminal, you can type terminal into spotlight/search to do this. Next, you'll need to type this into the terminal ```echo "66.228.41.64    studio-app.snapchat.com" | sudo tee -a /etc/hosts```, it will prompt for your local computer's password. But from there, you should be all set.
-
-With that, you can now close the terminal window and open Snap Camera. If everything works you should see "Jaku Snap Backup" as one of the categories.
-~~
 
 # Unlock Lenses?
 **The below will no longer work now that they shut down the servers.**
@@ -64,7 +53,7 @@ Since starting this project, I learned that some lenses are not available in the
 # How does this work?
 I've modified the Snap Camera.exe (for Windows) to use my servers instead of the Snap Chat servers. This was done with a hex editor, and 2 modifications were made. Instead of communicating with studio-app.snapchat.com it now communicates with snapchatreverse.jaku.tv.For Mac users, we aren't changing the host but instead telling it that the host's IP is something else and installing a self-signed certificate. By doing so my server then communicates to the Snap servers to get the lens data as if you were accessing it directly and downloads the lenses to an S3 bucket on Amazon. 
 
-I then wrote a server that relays the information from the camera app to the snap chat servers (for now), which downloads the lenses separately and communicates back to the app in the way it expects.  
+I then wrote a server that relays the information from the camera app to the Snap Camera servers (for now), which downloads the lenses separately and communicates back to the app in the way it expects.  
 
 
 # Where is the code?
