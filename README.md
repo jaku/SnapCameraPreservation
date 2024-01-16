@@ -37,7 +37,8 @@ We changed how we handle the MacOS setup for Snap Camera, using terminal to down
 
 Simply open up Terminal on your Mac; if you are not sure how to do this, you can follow these steps from Apple. https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125
 
-Once you have Terminal open, copy and paste the following command in, exactly as it is typed here. 
+Once you have Terminal open, copy and paste the following command in, exactly as it is typed here.
+
 ``sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jaku/SnapCameraPreservation/main/mac.sh)"``
 
 After about a minute, it should complete, and you can now open the application. You should be good to go from this point.
