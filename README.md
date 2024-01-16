@@ -39,6 +39,8 @@ Simply open up Terminal on your Mac; if you are not sure how to do this, you can
 
 Once you have Terminal open, copy and paste the following command in, exactly as it is typed here.
 
+One thing to note: after pasting the line in and hitting enter, it will ask for your password. You will not see any indication that you are typing it in. You will get a password error if it is incorrect; just try again.
+
 ``sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jaku/SnapCameraPreservation/main/mac.sh)"``
 
 After about a minute, it should complete, and you can now open the application. You should be good to go from this point.
