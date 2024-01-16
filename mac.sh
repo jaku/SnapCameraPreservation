@@ -36,6 +36,11 @@ echo "This part will take a while. Please be patient."
 # Step 1: Dump the binary to a plain hex representation
 xxd -p "$original_binary" | tr -d '\n' > "$tmp_hex_dump"
 
+if [ $? -ne 0 ]; then
+    echo "Failed to dump the Snap Camera app, check that Terminal has permission under App Management and try again."
+    exit 1
+fi
+
 # Step 2: Modify the hex representation
 sed -i '' "s/$original_url_hex/$replacement_url_hex/g" "$tmp_hex_dump"
 
@@ -45,6 +50,12 @@ xxd -r -p "$tmp_hex_dump" > "$modified_binary"
 # Step 4: Overwrite the original binary with the modified version
 # Note: This step requires administrative privileges
 sudo cp "$modified_binary" "$original_binary"
+
+if [ $? -ne 0 ]; then
+    echo "Unable to complete the application move, check that Terminal has permission under App Management and try again."
+    exit 1
+fi
+
 
 # Clean up temporary files
 rm "$tmp_hex_dump"
