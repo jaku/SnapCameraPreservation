@@ -23,7 +23,7 @@ Open a folder to "C:\Program Files\Snap Inc\Snap Camera", find the same "Snap Ca
 Now you can run the file from there, and everything should be working as expected.
 
 
-If you have issues, make sure you don't have any Adblock or things blocking the patch site and that you are patching the correct version. Additionally, make sure that the original Snap Camera application is stopped and not running at all. I recommend checking your task manager and searching for "Snap Camera" and closing it there to be sure. If it is running, you will not be able to replace its file with mine.
+If you have issues, make sure you don't have any Adblock or things blocking the patch site and that you are patching the correct version. Additionally, make sure that the original Snap Camera application is stopped and not running at all. I recommend checking your task manager, searching for "Snap Camera" and closing it there to be sure. If it is running, you will not be able to replace its file with mine.
 
 I cannot host the EXE due to copyright, but I can patch it if you provide the original exe.
 
@@ -31,7 +31,18 @@ You'll know you are communicating with my server because a new category will be 
 
 If you see the above, go ahead and click on each of your saved lenses and activate them once to ensure they are backed up. After that, you are free to sit back and relax.
 
-# Instructions for Mac
+# Instructions for Mac 2024 and beyond
+
+We changed how we handle the MacOS setup for Snap Camera, using terminal to download and run a single script file, this will handle the setup for everything. You will no longer need to worry about the certificate from expiring as we are patching the application similar to how we do on Windows.
+
+Simply open up Terminal on your Mac; if you are not sure how to do this, you can follow these steps from Apple. https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125
+
+Once you have Terminal open copy and paste the follow command in, exactly as it is typed here. ``sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jaku/SnapCameraPreservation/main/mac.sh)"``
+
+After about a minute it should complete and you can now open the application. You should be good to go from this point.
+
+
+~~# Instructions for Mac
 Patching the application similar to Windows does not work. The built-in security of MacOS is preventing modified binaries to run, and attempts to resign are failing. However, another solution for MacOS users exists, it's not my favorite approach, but it does work and is available for users.
 
 Download the [studio-app.snapchat.com.crt.zip](https://github.com/jaku/SnapCameraPreservation/raw/main/studio-app.snapchat.com.zip) file in this repository, and extract it. You should now have a studio-app.snapchat.com.crt file. Double-clicking it should open up your Keychain Manager. Click on the login option on the left-hand side of the Keychain Manager, and then on the right-hand side, click Certificates. You should see studio-app.snapchat.com listed with a red icon to the left of the name. Go ahead and right-click on this file and select "Get Info", click the Trust arrow at the top, and for the option "When using this certificate," select "Always Trust", close this window, and it should prompt you for your MacOS password.
@@ -41,6 +52,7 @@ Almost done!
 Open up terminal, you can type terminal into spotlight/search to do this. Next, you'll need to type this into the terminal ```echo "66.228.41.64    studio-app.snapchat.com" | sudo tee -a /etc/hosts```, it will prompt for your local computer's password. But from there, you should be all set.
 
 With that, you can now close the terminal window and open Snap Camera. If everything works you should see "Jaku Snap Backup" as one of the categories.
+~~
 
 # Unlock Lenses?
 **The below will no longer work now that they shut down the servers.**
