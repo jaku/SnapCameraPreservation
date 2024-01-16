@@ -20,7 +20,7 @@ original_binary="/Applications/Snap Camera.app/Contents/MacOS/Snap Camera"
 tmp_hex_dump="/tmp/snapcamera.hex"
 modified_binary="/tmp/snapcamera"
 
-if [ ! -f "$original_binary" ]; then
+if [ ! -f "/Applications/Snap Camera.app/Contents/MacOS/Snap Camera" ]; then
     echo "Snap Camera not found. Please install first and then run this script."
     exit 1
 fi
