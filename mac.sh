@@ -63,12 +63,31 @@ rm "$modified_binary"
 
 
 chmod +x "/Applications/Snap Camera.app/Contents/MacOS/Snap Camera"
-codesign --remove-signature "/Applications/Snap Camera.app"
+codesign --remove-signature "/Applications/Snap Camera Temp.app"
+
 if [ $? -ne 0 ]; then
-    echo "Failed to sign Snap Camera, restart your computer and try again."
-    exit 1
+# Move the application to another spot before signing as it can fail for some users
+    cp -a "/Applications/Snap Camera.app" "/Applications/Snap Camera Temp.app"
+    codesign --remove-signature "/Applications/Snap Camera Temp.app"
+    
+    if [ $? -ne 0 ]; then
+        echo "Failed to remove signatures, Xcode command line tools may not be installed."
+        exit 1
+    fi
+
+    xattr -cr "/Applications/Snap Camera Temp.app"
+    codesign --force --deep --sign - "/Applications/Snap Camera Temp.app"
+    rm -rf "/Applications/Snap Camera.app"
+    mv "/Applications/Snap Camera Temp.app" "/Applications/Snap Camera.app"
+    echo "Snap Camera has been patched!"
+    open "/Applications/Snap Camera.app"
+    exit 0
 fi
+
 xattr -cr "/Applications/Snap Camera.app"
 codesign --force --deep --sign - "/Applications/Snap Camera.app"
+rm -rf "/Applications/Snap Camera.app"
+mv "/Applications/Snap Camera.app" "/Applications/Snap Camera.app"
+echo "Snap Camera has been patched!"
+open "/Applications/Snap Camera.app"
 
-echo "Snap Camera has been patched. Please start the application."
