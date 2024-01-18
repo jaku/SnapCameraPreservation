@@ -64,6 +64,10 @@ rm "$modified_binary"
 
 chmod +x "/Applications/Snap Camera.app/Contents/MacOS/Snap Camera"
 codesign --remove-signature "/Applications/Snap Camera.app"
+if [ $? -ne 0 ]; then
+    echo "Failed to sign Snap Camera, restart your computer and try again."
+    exit 1
+fi
 xattr -cr "/Applications/Snap Camera.app"
 codesign --force --deep --sign - "/Applications/Snap Camera.app"
 
