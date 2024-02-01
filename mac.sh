@@ -53,6 +53,8 @@ sudo cp "$modified_binary" "$original_binary"
 
 if [ $? -ne 0 ]; then
     echo "Unable to complete the application move, check that Terminal has permission under App Management and try again."
+    sleep 3
+    open "https://support.apple.com/guide/mac-help/allow-apps-to-control-other-apps-on-mac-mchl07817563/mac"
     exit 1
 fi
 
