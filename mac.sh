@@ -69,7 +69,7 @@ codesign --remove-signature "/Applications/Snap Camera Temp.app"
 
 if [ $? -ne 0 ]; then
 # Move the application to another spot before signing as it can fail for some users
-    cp -afr "/Applications/Snap Camera.app" "/Applications/Snap Camera Temp.app"
+    cp -fa "/Applications/Snap Camera.app" "/Applications/Snap Camera Temp.app"
     codesign --remove-signature "/Applications/Snap Camera Temp.app"
     
     if [ $? -ne 0 ]; then
@@ -80,7 +80,7 @@ if [ $? -ne 0 ]; then
     xattr -cr "/Applications/Snap Camera Temp.app"
     codesign --force --deep --sign - "/Applications/Snap Camera Temp.app"
     #rm -rf "/Applications/Snap Camera.app"
-    cp -afr "/Applications/Snap Camera Temp.app" "/Applications/Snap Camera.app"
+    cp -fa "/Applications/Snap Camera Temp.app" "/Applications/Snap Camera.app"
     #rm -rf "/Applications/Snap Camera Temp.app"
     echo "Snap Camera has been patched!"
     open "/Applications/Snap Camera.app"
