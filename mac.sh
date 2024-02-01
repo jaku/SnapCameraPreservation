@@ -63,7 +63,7 @@ rm "$modified_binary"
 
 
 chmod +x "/Applications/Snap Camera.app/Contents/MacOS/Snap Camera"
-codesign --remove-signature "/Applications/Snap Camera Temp.app"
+#codesign --remove-signature "/Applications/Snap Camera Temp.app"
 
 if [ $? -ne 0 ]; then
 # Move the application to another spot before signing as it can fail for some users
@@ -90,4 +90,3 @@ rm -rf "/Applications/Snap Camera.app"
 mv "/Applications/Snap Camera.app" "/Applications/Snap Camera.app"
 echo "Snap Camera has been patched!"
 open "/Applications/Snap Camera.app"
-
