@@ -80,7 +80,8 @@ if [ $? -ne 0 ]; then
     xattr -cr "/Applications/Snap Camera Temp.app"
     codesign --force --deep --sign - "/Applications/Snap Camera Temp.app"
     rm -rf "/Applications/Snap Camera.app"
-    mv "/Applications/Snap Camera Temp.app" "/Applications/Snap Camera.app"
+    cp -a "/Applications/Snap Camera Temp.app" "/Applications/Snap Camera.app"
+    rm -rf "/Applications/Snap Camera Temp.app"
     echo "Snap Camera has been patched!"
     open "/Applications/Snap Camera.app"
     exit 0
