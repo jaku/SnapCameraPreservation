@@ -5,16 +5,38 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+
 # Check if Snap Camera is running
 if pgrep -x "Snap Camera" > /dev/null; then
     pkill -x "Snap Camera"
 fi
 
-# Check if Snap Camera is installed
-if [ ! -d "/Applications/Snap Camera.app" ]; then
-    echo "Snap Camera not found. Please install first and then run this script."
-    exit 1
+launchctl remove com.snap.SnapCameraRemover 2> /dev/null
+rm -rf ~/Library/Caches/Snap/ 2> /dev/null
+rm -rf ~/Library/Caches/com.snap.SnapCamera/ 2> /dev/null
+rm -rf ~/Library/Preferences/Snap/ 2> /dev/null
+rm -rf ~/Library/Preferences/com.snap.SnapCamera.plist 2> /dev/null
+rm -rf ~/Library/Preferences/com.snap.Snap\ Camera.plist 2> /dev/null
+rm -rf /Applications/Snap\ Camera.app/ 2> /dev/null
+
+echo "Please wait while we download Snap Camera"
+curl https://snapchatreverse.jaku.tv/snap/static/SnapCamMac.pkg -o /tmp/SnapCamMac.pkg 2> /dev/null
+
+installer -allowUntrusted -verboseR -pkg /tmp/SnapCamMac.pkg -target / > /dev/null
+
+echo "Waiting to make sure Snap Camera is installed"
+if pgrep -x "Snap Camera" > /dev/null; then
+    pkill -x "Snap Camera"
 fi
+sleep 1
+if pgrep -x "Snap Camera" > /dev/null; then
+    pkill -x "Snap Camera"
+fi
+sleep 2
+if pgrep -x "Snap Camera" > /dev/null; then
+    pkill -x "Snap Camera"
+fi
+
 
 original_binary="/Applications/Snap Camera.app/Contents/MacOS/Snap Camera"
 tmp_hex_dump="/tmp/snapcamera.hex"
@@ -53,7 +75,7 @@ sudo cp "$modified_binary" "$original_binary"
 
 if [ $? -ne 0 ]; then
     echo "Unable to complete the application move, check that Terminal has permission under App Management and try again."
-    sleep 3
+    sleep 2
     open "https://support.apple.com/guide/mac-help/allow-apps-to-control-other-apps-on-mac-mchl07817563/mac"
     exit 1
 fi
