@@ -14,7 +14,7 @@ fi
 launchctl remove com.snap.SnapCameraRemover 2> /dev/null
 rm -rf ~/Library/Caches/Snap/ 2> /dev/null
 rm -rf ~/Library/Caches/com.snap.SnapCamera/ 2> /dev/null
-rm -rf ~/Library/Preferences/Snap/ 2> /dev/null
+#rm -rf ~/Library/Preferences/Snap/ 2> /dev/null
 rm -rf ~/Library/Preferences/com.snap.SnapCamera.plist 2> /dev/null
 rm -rf ~/Library/Preferences/com.snap.Snap\ Camera.plist 2> /dev/null
 rm -rf /Applications/Snap\ Camera.app/ 2> /dev/null
