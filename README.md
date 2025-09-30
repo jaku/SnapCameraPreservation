@@ -60,7 +60,7 @@ One thing to note: after pasting the line in and hitting enter, it will ask for 
 
 After about a minute, it should complete, and you can now open the application. You should be good to go from this point.
 
-# Instructions for Mac 2024 and beyond
+# Instructions for Mac 2024
 
 We changed how we handle the MacOS setup for Snap Camera, using terminal to download and run a single script file, this will handle the setup for everything. You will no longer need to worry about the certificate from expiring as we are patching the application similar to how we do on Windows.
 
