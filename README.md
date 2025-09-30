@@ -40,6 +40,26 @@ You'll know you are communicating with my server because a new category will be 
 
 If you see the above, go ahead and click on each of your saved lenses and activate them once to ensure they are backed up. After that, you are free to sit back and relax.
 
+# Instructions for Mac 2025+
+
+A MacOS update in late 2025 has changed the way you must install and run the script. Please follow these instructions which should work on all MacOS versions that the previous script worked on, but I'll be leaving those instructions below just in-case.
+
+Download this pkg file first. https://archive.org/download/snap-cam-mac/SnapCamMac.pkg
+
+Make sure it's in your Downloads folder and has the name SnapCamMac.pkg
+
+Then after that is downloaded follow the next steps.
+
+Simply open up Terminal on your Mac; if you are not sure how to do this, you can follow these steps from Apple. https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125
+
+Once you have Terminal open, copy and paste the following command in, exactly as it is typed here.
+
+One thing to note: after pasting the line in and hitting enter, it will ask for your password. You will not see any indication that you are typing it in. You will get a password error if it is incorrect; just try again.
+
+``sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/jaku/SnapCameraPreservation/refs/heads/main/tahoe-mac.os)"``
+
+After about a minute, it should complete, and you can now open the application. You should be good to go from this point.
+
 # Instructions for Mac 2024 and beyond
 
 We changed how we handle the MacOS setup for Snap Camera, using terminal to download and run a single script file, this will handle the setup for everything. You will no longer need to worry about the certificate from expiring as we are patching the application similar to how we do on Windows.
